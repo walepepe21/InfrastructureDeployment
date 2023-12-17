@@ -1,7 +1,11 @@
 # configured aws provider with proper credentials
 provider "aws" {
   region    = "us-east-1"
+<<<<<<< HEAD
   profile   = "yusuf"
+=======
+ # profile   = "yusuf"
+>>>>>>> b552ef057e5bf39dc451430a2da084d19bd488cc
 }
 
 
@@ -108,4 +112,8 @@ resource "aws_instance" "ec2_instance" {
 # print the url of the sonarqube server
 output "website_url" {
   value     = join ("", ["http://", aws_instance.ec2_instance.public_dns, ":", "9000"])
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b552ef057e5bf39dc451430a2da084d19bd488cc
