@@ -108,4 +108,3 @@ resource "aws_instance" "ec2_instance" {
 output "website_url" {
   value     = join ("", ["http://", aws_instance.ec2_instance.public_dns, ":", "9000"])
 }
-}
