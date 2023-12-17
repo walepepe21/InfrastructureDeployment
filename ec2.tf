@@ -98,43 +98,12 @@ resource "aws_instance" "ec2_instance" {
   subnet_id              = aws_default_subnet.default_az1.id
   vpc_security_group_ids = [aws_security_group.ec2_security_group_sonarqube.id]
   key_name               = "devopskeypair"
- # user_data = "${file("install_sonarqube.sh")}"
+  user_data = "${file("install_sonarqube.sh")}"
 
   tags = {
     Name = "sonarqube_server"
   }
 }
-
-
-# an empty resource block
-resource "null_resource" "name" {
-
-  # ssh into the ec2 instance 
-  connection {
-    type        = "ssh"
-    user        = "ubuntu"
-    private_key = file("devopskeypair.pem")
-    host        = aws_instance.ec2_instance.public_ip
-  }
-
-  # copy the install_sonarqube.sh file from your computer to the ec2 instance 
-  provisioner "file" {
-    source      = "install_sonarqube.sh"
-    destination = "/tmp/install_sonarqube.sh"
-  }
-
-  # set permissions and run the install_sonarqube.sh file
-  provisioner "remote-exec" {
-    inline = [
-        "sudo chmod +x /tmp/install_sonarqube.sh",
-        "sh /tmp/install_sonarqube.sh",
-    ]
-  }
-
-  # wait for ec2 to be created
-  depends_on = [aws_instance.ec2_instance]
-}
-
 
 # print the url of the sonarqube server
 output "website_url" {
