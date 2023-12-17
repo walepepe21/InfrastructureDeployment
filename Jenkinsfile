@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('Git checkout') {
             steps {
-                git 'https://github.com/tkibnyusuf/Infrastructure_Provisioning.git'
+                git 'https://github.com/tkibnyusuf/InfrastructureDeployment.git'
             }
         }
         
