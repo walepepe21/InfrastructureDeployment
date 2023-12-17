@@ -12,9 +12,9 @@ pipeline {
            }
            steps {
               script {
-                  sh "terraform init"
-                  sh "terraform validate"
-                  sh "terraform plan"
+                 # sh "terraform init"
+                #  sh "terraform validate"
+                #  sh "terraform plan"
                   sh " terraform destroy --auto-approve"
             }
         }
