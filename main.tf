@@ -2,6 +2,14 @@ provider "aws" {
   region     = "us-east-1"
 }
 
+terraform {
+  backend "s3" {
+    bucket = "yusuf-jenkins"
+    key    = "newresource.tfstate"
+    region = "us-east-1"
+  }
+}
+
 # custom vpc
 resource "aws_vpc" "demo" {
   cidr_block       = "10.0.0.0/16"
