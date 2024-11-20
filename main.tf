@@ -4,7 +4,7 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "yusuf-jenkins"
+    bucket = "pepe-jenkins"
     key    = "newresource.tfstate"
     region = "us-east-1"
   }
